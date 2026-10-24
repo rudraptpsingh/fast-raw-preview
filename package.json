@@ -1,0 +1,48 @@
+{
+  "name": "fast-raw-preview",
+  "version": "0.1.0",
+  "description": "Ultra-fast embedded JPEG preview and burst EXIF metadata extractor for camera RAW files (Canon CR2/CR3, Nikon NEF, Sony ARW, Fuji RAF, Olympus ORF, DNG, etc.)",
+  "keywords": [
+    "raw",
+    "preview",
+    "exif",
+    "photography",
+    "cr3",
+    "arw",
+    "nef",
+    "raf",
+    "dng",
+    "culling",
+    "lightroom"
+  ],
+  "author": "Rudra Pratap Singh",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rudraptpsingh/fast-raw-preview.git"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "fast-raw-preview": "dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "src",
+    "crates",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "test": "node --test test/*.test.js"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

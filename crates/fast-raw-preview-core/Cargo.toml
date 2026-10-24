@@ -1,0 +1,37 @@
+[package]
+name = "fast-raw-preview"
+version = "0.1.0"
+edition = "2021"
+description = "Ultra-fast embedded JPEG preview and burst EXIF metadata extractor for camera RAW files"
+license = "MIT"
+authors = ["Rudra Pratap Singh"]
+repository = "https://github.com/rudraptpsingh/fast-raw-preview"
+keywords = ["raw", "exif", "preview", "photography", "cr3"]
+categories = ["multimedia::images", "parser-implementations"]
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[features]
+default = ["napi"]
+napi = ["dep:napi", "dep:napi-derive", "dep:napi-build"]
+
+[dependencies]
+napi = { version = "2", default-features = false, features = ["napi8"], optional = true }
+napi-derive = { version = "2", optional = true }
+rayon = "1.10"
+memmap2 = "0.9"
+
+[build-dependencies]
+napi-build = { version = "2", optional = true }
+
+[profile.release]
+lto = true
+codegen-units = 1
+opt-level = 3
+strip = "symbols"
+
+[[example]]
+name = "bench"
+path = "examples/bench.rs"
+required-features = []
